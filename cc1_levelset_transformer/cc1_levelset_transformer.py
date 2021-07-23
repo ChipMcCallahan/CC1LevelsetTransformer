@@ -31,9 +31,9 @@ class CC1LevelsetTransformer:
             mobs = mobs.union(set((CC1TileCode.CLONER,)))
         return self.keep(levels, mobs)
     
-    # for a different mob, replace blobs with CC1TileCodes.TEETH for example
-    def blobs_edition(self, levels, blobs=CC1TileCodes.BLOBS):
+    # old can be multiple mob types. new must be exactly one mob for each direction.
+    def mob_switcher(self, levels, old, new):
         for d in "NESW":
-            targets = set(tuple(mob for mob in CC1TileCodes.MONSTERS if CC1TileCode.Name(mob).endswith(f"_{d}")))
-            replace = tuple(mob for mob in blobs if CC1TileCode.Name(mob).endswith(f"_{d}"))
+            targets = set(tuple(mob for mob in old if CC1TileCode.Name(mob).endswith(f"_{d}")))
+            replace = tuple(mob for mob in new if CC1TileCode.Name(mob).endswith(f"_{d}"))
             self.transform(levels, targets, replace[0])
