@@ -37,6 +37,4 @@ class CC1LevelsetTransformer:
         for d in "NESW":
             targets = set(tuple(mob for mob in CC1TileCodes.MONSTERS if CC1TileCode.Name(mob).endswith(f"_{d}")))
             replace = tuple(mob for mob in blobs if CC1TileCode.Name(mob).endswith(f"_{d}"))
-            print(targets)
-            print(replace)
             self.transform(levels, targets, replace[0])
