@@ -1,4 +1,4 @@
-from cc1_levelset_proto.cc1_levelset_pb2 import CC1TileCode, Levelset
+from cc1_levelset_proto.cc1_levelset_pb2 import CC1TileCode, Levelset, Level
 from cc1_levelset_proto import CC1TileCodes, CC1Levels
 
 class CC1LevelsetTransformer:
