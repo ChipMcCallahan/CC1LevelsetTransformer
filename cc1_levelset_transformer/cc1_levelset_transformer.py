@@ -23,14 +23,12 @@ class CC1LevelsetTransformer:
         old = set(old)
         self.transform(levels, CC1TileCodes.ALL.difference(old), CC1TileCode.FLOOR)
     
-    def walls_of(self, levels, walls=CC1TileCodes.WALLS, *, keep_panels=True):
-        if keep_panels:
-            walls.update(CC1TileCodes.PANELS)
+    def walls_of(self, levels, walls=CC1TileCodes.WALLS.union(CC1TileCodes.PANELS)):
         return self.keep(levels, walls)
     
     def mobs_of(self, levels, mobs=CC1TileCodes.ENTITIES, *, keep_cloners=True):
         if keep_cloners:
-            mobs.add(CC1TileCode.CLONER)
+            mobs = mobs.union(set(CC1TileCode.CLONER,))
         return self.keep(levels, mobs)
     
     # for a different mob, replace blobs with CC1TileCodes.TEETH for example
