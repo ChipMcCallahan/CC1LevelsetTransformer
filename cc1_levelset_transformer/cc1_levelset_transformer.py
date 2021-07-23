@@ -28,7 +28,7 @@ class CC1LevelsetTransformer:
     
     def mobs_of(self, levels, mobs=CC1TileCodes.ENTITIES, *, keep_cloners=True):
         if keep_cloners:
-            mobs = mobs.union(set(CC1TileCode.CLONER,))
+            mobs = mobs.union(set((CC1TileCode.CLONER,)))
         return self.keep(levels, mobs)
     
     # for a different mob, replace blobs with CC1TileCodes.TEETH for example
